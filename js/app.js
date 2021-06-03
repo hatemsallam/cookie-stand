@@ -436,6 +436,11 @@ let table = document.createElement('table')
 
 parent.appendChild(table)
 
+
+
+ 
+function headerRow()  {
+
 let headingRow = document.createElement('tr')
 
 table.appendChild(headingRow)
@@ -466,6 +471,12 @@ let thElement2 = document.createElement('th');
 headingRow.appendChild(thElement2);
 
 thElement2.textContent = 'Daily Location Total';
+
+
+}
+
+headerRow()
+
 
 
 CityBranch.prototype.render = function () {
@@ -511,7 +522,7 @@ Paris.render()
 Lima.render()
 
 
-
+function footerRow() {
 let headingRow3 = document.createElement('tr')
 
 table.appendChild(headingRow3)
@@ -546,6 +557,69 @@ headingRow3.appendChild(thElement6);
 
 thElement6.textContent = Seattle.grandTotal;
 
+}
+
+footerRow()
+
+
+
+
+
+
+let storeForm=document.getElementById('storeForm');
+
+
+
+
+storeForm.addEventListener('submit',submitter);
+
+function submitter(event) {
+  
+  event.preventDefault();
+
+  
+
+  
+  let name=event.target.nameField.value;
+
+  
+  let  minCust1=event.target.mincustfield.value;
+  
+
+//console.log(minCust1)
+  
+
+  let maxCust1=event.target.maxcustfield.value;
+  //console.log(maxCust1);
+
+  let avgCookies1=event.target.avgfield.value;
+  //console.log(avgCookies1);
+
+
+  
+
+
+  
+
+  let addedStore=new CityBranch(name,minCust1,maxCust1,avgCookies1)
+
+  console.log(addedStore);
+
+let tablelength=table.rows.length-1;
+table.deleteRow(tablelength)
+  
+
+addedStore.getRandomCustomerPerhour()
+addedStore.getAvgCookiesPerhour()
+addedStore.CalculateTotal1()
+addedStore.render()
+
+Seattle.GettotalCookiesPerhour()
+Seattle.GetGrandtotal()
+footerRow()
+  
+
+}
 
 
 
