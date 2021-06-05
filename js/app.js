@@ -563,40 +563,48 @@ function submitter(event) {
 
   
   let name=event.target.nameField.value;
-
+ 
   
-  let  minCust1=event.target.mincustfield.value;
-  
-
-//console.log(minCust1)
   
 
-  let maxCust1=event.target.maxcustfield.value;
-  //console.log(maxCust1);
+  //console.log(addedStore);
 
-  let avgCookies1=event.target.avgfield.value;
-  //console.log(avgCookies1);
-
-
+if (name=='') {alert('please enter a store name')
+    
+} else {let  minCust1=event.target.mincustfield.value;
   
 
+    //console.log(minCust1)
+      
+    
+      let maxCust1=event.target.maxcustfield.value;
+      //console.log(maxCust1);
+    
+      let avgCookies1=event.target.avgfield.value;
+      //console.log(avgCookies1);
+    
+    
+      
+    
+    
+      
+    
+      let addedStore=new CityBranch(name,minCust1,maxCust1,avgCookies1)
+    
+    
+    let tablelength=table.rows.length-1;
+    table.deleteRow(tablelength)
+      
+    
+    addedStore.getRandomCustomerPerhour()
+    addedStore.getAvgCookiesPerhour()
+    addedStore.CalculateTotal1()
+    addedStore.render()
+    
+    footerRow()
+    
+}
 
-  
-
-  let addedStore=new CityBranch(name,minCust1,maxCust1,avgCookies1)
-
-  console.log(addedStore);
-
-let tablelength=table.rows.length-1;
-table.deleteRow(tablelength)
-  
-
-addedStore.getRandomCustomerPerhour()
-addedStore.getAvgCookiesPerhour()
-addedStore.CalculateTotal1()
-addedStore.render()
-
-footerRow()
   
 }
 
