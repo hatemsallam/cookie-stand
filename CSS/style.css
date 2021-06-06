@@ -2,3 +2,80 @@ table,th,td {
     border: solid black 1px;
     border-collapse: collapse;
   }
+  
+  *{
+    box-sizing: border-box;
+  }
+  
+  body{
+      font-family: Arial, Helvetica, sans-serif;
+      
+      background-color: rgba(27, 158, 152, 0.959);
+      
+  }
+  
+  header{
+      padding: 30px;
+      
+      background-color:rgb(223, 124, 58) ;
+
+      margin-bottom: 30px;
+      
+  }
+
+
+
+h1{
+  font-family: 'Kaushan Script', cursive;
+  text-align: center;
+  color: rgb(153, 40, 97)
+}
+
+
+  nav{
+    text-align: left;
+  }
+
+  nav a{
+    text-decoration: none;
+    color: rgb(69, 116, 67);
+    
+font-family: 'Libre Baskerville', serif;
+  }
+
+
+  #seatle{
+    text-align: center;
+  }
+
+  div{
+    margin-bottom: 30px;
+  }
+  
+
+ table{
+   margin-left: 500px;
+   margin-bottom: 15px;
+   background-color: pink;
+  
+ }
+
+
+
+ main p{
+   margin-left: 300px;
+   margin-right: 300px;
+   font-family: 'Libre Baskerville', serif;
+   color: rgb(121, 30, 30);
+   background-color: rgb(48, 171, 187);
+   
+ }
+
+
+
+ footer{
+  background-color:rgb(223, 124, 58) ;
+   height: 100px;
+font-family: 'Libre Baskerville', serif;
+color: rgb(43, 78, 41);
+ }

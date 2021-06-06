@@ -339,9 +339,7 @@ function CityBranch(name, minCust, maxCust, avgCookies,) {
     this.avgCookies = avgCookies
     this.randomCustomerPerhour = []
     this.avgCookiesPerHour = []
-    this.totalCookiesPerhour = []
     this.total1 = 0
-    this.grandTotal = 0
 
     cityBranch.push(this)
 }
@@ -370,11 +368,6 @@ CityBranch.prototype.getRandomCustomerPerhour = function () {
 
 }
 
-Seattle.getRandomCustomerPerhour()
-Tokyo.getRandomCustomerPerhour()
-Dubai.getRandomCustomerPerhour()
-Paris.getRandomCustomerPerhour()
-Lima.getRandomCustomerPerhour()
 
 
 
@@ -387,11 +380,6 @@ CityBranch.prototype.getAvgCookiesPerhour = function () {
     }
 
 }
-Seattle.getAvgCookiesPerhour()
-Tokyo.getAvgCookiesPerhour()
-Dubai.getAvgCookiesPerhour()
-Paris.getAvgCookiesPerhour()
-Lima.getAvgCookiesPerhour()
 
 
 CityBranch.prototype.CalculateTotal1 = function () {
@@ -402,32 +390,7 @@ CityBranch.prototype.CalculateTotal1 = function () {
 
 }
 
-Seattle.CalculateTotal1()
-Tokyo.CalculateTotal1()
-Dubai.CalculateTotal1()
-Paris.CalculateTotal1()
-Lima.CalculateTotal1()
 
-
-CityBranch.prototype.GettotalCookiesPerhour = function () {
-    for (let i = 0; i < hours.length; i++) {
-        this.totalCookiesPerhour.push(Seattle.avgCookiesPerHour[i] + Tokyo.avgCookiesPerHour[i] + Dubai.avgCookiesPerHour[i] + Paris.avgCookiesPerHour[i] + Lima.avgCookiesPerHour[i])
-    }
-}
-
-Seattle.GettotalCookiesPerhour()
-//Tokyo.GettotalCookiesPerhour()
-
-
-
-CityBranch.prototype.GetGrandtotal = function () {
-    for (let i = 0; i < hours.length; i++) {
-        this.grandTotal = this.grandTotal + this.totalCookiesPerhour[i]
-    }
-}
-
-Seattle.GetGrandtotal()
-//Tokyo.GetGrandtotal()
 
 
 let parent = document.getElementById('seatle')
@@ -515,11 +478,14 @@ CityBranch.prototype.render = function () {
 
 }
 
-Seattle.render()
-Tokyo.render()
-Dubai.render()
-Paris.render()
-Lima.render()
+for (let i = 0; i < cityBranch.length; i++) {
+    cityBranch[i].getRandomCustomerPerhour();
+    cityBranch[i].getAvgCookiesPerhour();
+    cityBranch[i].CalculateTotal1();
+    cityBranch[i].render();
+    
+   
+}
 
 
 function footerRow() {
@@ -534,32 +500,48 @@ headingRow3.appendChild(thElement4);
 
 thElement4.textContent = 'Totals';
 
-
-console.log(Seattle.grandTotal)
-console.log(Tokyo.grandTotal)
-
+let grandTotal=0
 for (let i = 0; i < hours.length; i++) {
 
 
-    let thElement5 = document.createElement('th');
+    let totalEachHour=0
+    for(let j=0; j<cityBranch.length;j++) {
+
+        totalEachHour+=cityBranch[j].avgCookiesPerHour[i]
+        grandTotal+=cityBranch[j].avgCookiesPerHour[i]
+    }
+    let thElement6 = document.createElement('th');
 
 
-    headingRow3.appendChild(thElement5);
-
-
-    thElement5.textContent = Seattle.totalCookiesPerhour[i];
-
+    headingRow3.appendChild(thElement6);
+    
+    thElement6.textContent = totalEachHour
 }
-let thElement6 = document.createElement('th');
+let thElement7 = document.createElement('th');
 
 
-headingRow3.appendChild(thElement6);
+headingRow3.appendChild(thElement7);
 
-thElement6.textContent = Seattle.grandTotal;
+thElement7.textContent = grandTotal
 
 }
 
 footerRow()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -581,45 +563,54 @@ function submitter(event) {
 
   
   let name=event.target.nameField.value;
-
+ 
   
-  let  minCust1=event.target.mincustfield.value;
-  
-
-//console.log(minCust1)
   
 
-  let maxCust1=event.target.maxcustfield.value;
-  //console.log(maxCust1);
+  //console.log(addedStore);
 
-  let avgCookies1=event.target.avgfield.value;
-  //console.log(avgCookies1);
-
-
+if (name=='') {alert('please enter a store name')
+    
+} else {let  minCust1=event.target.mincustfield.value;
   
 
-
-  
-
-  let addedStore=new CityBranch(name,minCust1,maxCust1,avgCookies1)
-
-  console.log(addedStore);
-
-let tablelength=table.rows.length-1;
-table.deleteRow(tablelength)
-  
-
-addedStore.getRandomCustomerPerhour()
-addedStore.getAvgCookiesPerhour()
-addedStore.CalculateTotal1()
-addedStore.render()
-
-Seattle.GettotalCookiesPerhour()
-Seattle.GetGrandtotal()
-footerRow()
-  
-
+    //console.log(minCust1)
+      
+    
+      let maxCust1=event.target.maxcustfield.value;
+      //console.log(maxCust1);
+    
+      let avgCookies1=event.target.avgfield.value;
+      //console.log(avgCookies1);
+    
+    
+      
+    
+    
+      
+    
+      let addedStore=new CityBranch(name,minCust1,maxCust1,avgCookies1)
+    
+    
+    let tablelength=table.rows.length-1;
+    table.deleteRow(tablelength)
+      
+    
+    addedStore.getRandomCustomerPerhour()
+    addedStore.getAvgCookiesPerhour()
+    addedStore.CalculateTotal1()
+    addedStore.render()
+    
+    footerRow()
+    
 }
+
+  
+}
+
+
+
+
 
 
 
